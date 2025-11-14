@@ -11,8 +11,18 @@ Common scripts used in Combostrap repository
 Add it as submodule in your repo
 
 ```bash
-git submodule add https://github.com/combostrap/repo-scripts.git .repo-scripts
+git submodule add --name repo-scripts https://github.com/combostrap/repo-scripts.git .repo-scripts
 ```
+
+### Add it as Git directory in your IDE
+
+Optional, needed only if you want to commit to it from a submodule.
+
+Because it's a config/hidden directory, IDE may not see them.
+
+In Idea, you need to add the directory mapping (Settings > Version Control > Directory mapping) 
+because Intellij will not discover it automatically.
+
 
 ### Project Env
  

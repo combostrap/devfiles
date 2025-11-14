@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -TCEeuo pipefail # Strict Bash
+
+# Ref
+# https://jreleaser.org/guide/latest/examples/maven/maven-central.html#_maven
+
+# Verify release & deploy configuration
+echo "Check config"
+mvnw --quiet jreleaser:config
+
+# Ensure a clean deployment
+echo "Cleaning"
+mvnw --quiet clean
+
+# Stage all artifacts to a local directory
+echo "Stage Artifacts"
+mvnw --quiet -Ppublication
+
+# Deploy and release
+echo "Deploy and release"
+mvnw jreleaser:deploy

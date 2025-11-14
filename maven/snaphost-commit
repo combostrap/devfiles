@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -TCEeuo pipefail # Strict Bash
+# Change the version to a snapshot version
+# And create a next snapshot commit
+
+NEXT_VERSION=${1:-}
+PROJECT_VERSION=$(yq --exit-status '.project.version' pom.xml )
+
+if [[ $PROJECT_VERSION = *SNAPSHOT ]]; then
+  echo "Project Version is already a snapshot version: $PROJECT_VERSION"
+  exit 1
+fi
+
+if [ "$NEXT_VERSION" == "" ]; then
+  "$PROJECT_ROOT/mvnw" versions:set -DgenerateBackupPoms=false -DnextSnapshot=true
+  SNAPSHOT_VERSION=$(yq --exit-status '.project.version' pom.xml)
+else
+  # manually mvnw
+  SNAPSHOT_VERSION="$NEXT_VERSION-SNAPSHOT"
+  versions:set -DgenerateBackupPoms=false -DnewVersion="$SNAPSHOT_VERSION"
+fi
+
+
+git commit -am "chore(next): $SNAPSHOT_VERSION"
+git push origin

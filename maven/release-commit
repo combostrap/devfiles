@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -TCEeuo pipefail # Strict Bash
+# Change the version to a non snapshot version
+# And create a release commit
+
+PROJECT_VERSION=$(yq --exit-status '.project.version' pom.xml )
+
+if [[ ! $PROJECT_VERSION = *SNAPSHOT ]]; then
+  echo "Project Version is not a snapshot version: $PROJECT_VERSION"
+  exit 1
+fi
+
+NEXT_VERSION=${PROJECT_VERSION//-SNAPSHOT/}
+
+"$PROJECT_ROOT/mvnw" versions:set -DgenerateBackupPoms=false -DnewVersion="$NEXT_VERSION"
+
+git commit -am "chore(release): $NEXT_VERSION"
+git push origin

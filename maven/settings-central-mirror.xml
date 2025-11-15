@@ -1,0 +1,42 @@
+<!-- Example of settings for Maven Central Mirror -->
+<!-- Used in case of maven central outage -->
+<!-- mvn deploy -s settings-central-mirror.xml -DskipTests -B -->
+<settings>
+
+  <interactiveMode>false</interactiveMode>
+
+  <profiles>
+    <profile>
+      <id>google-mirror</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>google-maven-central</id>
+          <name>GCS Maven Central mirror EU</name>
+          <url>https://maven-central.storage-download.googleapis.com/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>google-maven-central</id>
+          <name>GCS Maven Central mirror</name>
+          <url>https://maven-central.storage-download.googleapis.com/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+</settings>

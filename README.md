@@ -79,4 +79,4 @@ In your scripts, you can use the following env:
 
 | `PROJECT_ROOT` | The root directory of the git repo |
 | `ORGANISATION_ENV_NAME` | The organization name in an env format |
-| `RESOURCE_MANAGER_ENV_PREFIX` | The resource manager prefix (ie `RM`) |
+| `RM_PREFIX` | The resource manager prefix (ie `RM`) |

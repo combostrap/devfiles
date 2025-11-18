@@ -38,7 +38,7 @@ To set the git user, you can set in your `.bashrc` the following env:
 | `RM_${ORGANIZATION_NAME}_EMAIL`       | `RM_EMAIL`               |
 | `RM_${ORGANIZATION_NAME}_SIGNING_KEY` | `RM_SIGNING_KEY`         |
 
-See the [Git User Configuration Script](git/config/user)
+See the [Git User Configuration Script](bin/git-config-user)
 
 ### Git Hooks Configuration and installation
 
@@ -47,7 +47,7 @@ The git hooks directory is configured to `.git-hooks` (See [Git Hooks configurat
 And the following hooks are synced in it:
 
 * [commit message hook](git/hooks/commit-msg/commit-lint) - for commit lint check
-* [pre-commit](git/hooks/pre-commit/out-of-sync) - to check for out of sync branch
+* [pre-commit](git-hooks/prevent-out-of-sync-commit) - to check for out of sync branch
 
 ### Scripts in PATH
 
@@ -55,7 +55,7 @@ Install the common [scripts](bin) in the `PATH`
 
 ### Editor Config for code styling
 
-Install the [root editor config](copier/.editorconfig)
+Install the [root editor config](copier-template/.editorconfig)
 
 ### Copy .gitignore and .gitattributes if not found
 

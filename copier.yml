@@ -49,7 +49,7 @@ _answers_file: .copier-answers.yml
 # _exclude:
 
 # Subdirectory from the repo to use as template
-_subdirectory: copier
+_subdirectory: copier-template
 
 # https://copier.readthedocs.io/en/stable/configuring/#tasks
 # _tasks:

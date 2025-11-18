@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# commit-msg hooks
-
-set -TCEeuo pipefail
-
-# Lint the commit message
-
-echo "CommitLint check" >/dev/stderr
-commitlint --extends '@commitlint/config-conventional' --verbose --edit  "$1"

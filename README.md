@@ -96,4 +96,3 @@ You can fork this repo and
 
 * make it your own
 * or create a pull request to contribute
-

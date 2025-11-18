@@ -22,4 +22,3 @@ rm_check_env_var() {
     fi
     return 0
 }
-

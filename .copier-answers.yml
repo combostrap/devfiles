@@ -7,3 +7,4 @@ copyright_year: 2025
 releaser_name: jreleaser
 license_type: Apache-2.0
 organisation_name: combostrap
+deploy_manager: jreleaser

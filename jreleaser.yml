@@ -45,4 +45,3 @@ release:
 signing:
   active: ALWAYS
   mode: COMMAND
-

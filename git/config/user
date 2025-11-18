@@ -39,4 +39,3 @@ else
   rm_echo_yellow "   No git pgp signing key configured. $SIGNING_KEY_VAR variable is empty"
 
 fi
-

@@ -9,6 +9,9 @@ repos:
       - id: check-yaml
       - id: check-added-large-files # no commit on large files
       - id: detect-private-key # detect private key
+        # Prevent committing inline conflict markers
+      - id: check-merge-conflict
+        args: [ --assume-in-merge ]
   - repo: https://github.com/tcort/markdown-link-check
     rev: v3.14.1
     hooks:

@@ -11,7 +11,7 @@ It uses the following software to manage common repositories stuff:
 * [copier](https://copier.readthedocs.io/) for project templating and upgrade
 * [direnv](https://direnv.net/) for project setup and environment
 * [pre-commit](https://pre-commit.com/) for files check and normalization
-* [bin](bin) scripts are made available by [cloning this repo](#scripts-in-path) and putting them in the `PATH`.
+* [common scripts](#common-scripts)  are made available by cloning this repo and putting them in the `PATH`.
 
 ## Where are the artifacts
 
@@ -36,16 +36,18 @@ Install:
 ### Copy or update this copier template
 
 * for a new git repo
+
 ```bash
 cd your_repo
 git init
 copier copy https://github.com/combostrap/repo-manager .
 ```
+
 * to update a git repo
+
 ```bash
 copier update .
 ```
-
 
 ### Setup and local configuration
 
@@ -54,7 +56,7 @@ The [.envrc](copier-template/.envrc.jinja) file is the main entry for `setup` an
 It will:
 
 * install the git hooks with `pre-commit`
-* [install, configure and sync the repo](#scripts-in-path)
+* [install the common scripts](#common-scripts)
 
 If you open your terminal, `direnv` should execute `.envrc`.
 If not:
@@ -62,7 +64,6 @@ If not:
 ```bash
 direnv reload
 ```
-
 
 ## Features and configuration
 
@@ -89,34 +90,43 @@ Default  [.gitignore](copier-template/.gitignore) and [.gitattributes](copier-te
 
 A License is installed
 
-### Project only env configuration (direnv.d)
+### Scripts
+
+#### Project only scripts (direnv.d)
 
 For project only configuration, you can add your own `direnv` scripts in the `PROJECT_ROOT/direnv.d` directory.
 All `.sh` files present in this directory will be sourced.
 
-In your scripts, you can use the following env:
+#### Common Scripts
 
-| Syntax                  | Description                                                          |
-|-------------------------|----------------------------------------------------------------------|
-| `PROJECT_ROOT`          | The root directory of the git repo (ie `GIT_ROOT` without submodule) |
-| `ORGANISATION_ENV_NAME` | The organization name in an env format                               |
+Common scripts located in the [bin](bin) directory are made available:
 
-### Scripts in PATH
+* by cloning this repo
+* and put the [bin](bin) in the `PATH`
 
-Install this repository by cloning it and put the common [scripts](bin) in the `PATH`
-
-You can change the behavior of the [envrc](copier-template/.envrc.jinja) resource manager script by setting the following variable in
-your shell profile, `~/.bashrc`, or `~/.config/direnv/direnvrc`, or `~/.envrc.local`.
-
+The code is in the [envrc](copier-template/.envrc.jinja) and can be configured by setting the
+following variable in your shell profile, `~/.bashrc`, or `~/.config/direnv/direnvrc`, or `~/.envrc.local`.
 
 | Environment | Default  Value                             | Description                                                             |
 |-------------|--------------------------------------------|-------------------------------------------------------------------------|
 | `RM_DIR`    | `$PROJET_ROOT/../repo-manager`             | The local file system location of the resource manager repository clone |
 | `RM_URI`    | https://github.com/combostrap/repo-manager | The URI location of the resource manager repository                     |
 
+#### Scripts Environment variable
+
+In your scripts, you can use the following env:
+
+| Syntax                   | Description                                                          |
+|--------------------------|----------------------------------------------------------------------|
+| `PROJECT_ROOT`           | The root directory of the git repo (ie `GIT_ROOT` without submodule) |
+| `ORGANISATION_NAME`      | The organization name                                                |
+| `ORGANISATION_ENV_NAME`  | The organization name in a env format                                |
+| `ORGANISATION_PATH_NAME` | The organization name in a file path format                          |
+
 ### Prepare your next commit
 
 You can check the files in you next commit with:
+
 ```bash
 task prepare
 # equivalent to
@@ -127,7 +137,8 @@ git-prepare
 
 ### Repository update
 
-You can update this repo to the last copier template with:
+You can update any repo generated to the last copier template with:
+
 ```bash
 task update
 # equivalent to

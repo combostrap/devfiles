@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# A hook used to fetch only once from remote on all hooks
+
+set -TCEeuo pipefail
+
+# Fetch the latest changes from remote
+git fetch --quiet 2>/dev/null

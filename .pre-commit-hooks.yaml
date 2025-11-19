@@ -16,3 +16,12 @@
   language: script
   stages: [ pre-commit ]
   minimum_pre_commit_version: 3.2.0
+- id: git-fetch
+  name: git fetch
+  description: |
+    Fetch the latest changes from remote
+  entry: git-hooks/git-fetch
+  language: script
+  pass_filenames: false
+  always_run: true
+  stages: [ pre-commit ]

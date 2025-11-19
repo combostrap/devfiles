@@ -1,18 +1,52 @@
 #!/bin/bash
 
-set -TCEeuo pipefail
+# Git hook to prevent operations when branch is behind remote
+# Place in .git/hooks/pre-push or pre-commit
 
-git fetch
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
-LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse "@{u}")
+# Get the current branch name
+current_branch=$(git branch --show-current)
 
-if [ "$LOCAL" != "$REMOTE" ]; then
-    echo "⚠️  WARNING: Your branch is out of sync with remote!"
-    echo "Run 'git pull' before committing."
-    read -p "Continue anyway? (y/n) " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
+if [ -z "$current_branch" ]; then
+    echo -e "${RED}Error: Not on any branch (detached HEAD state)${NC}"
+    exit 1
 fi
+
+# Get the remote tracking branch
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name "@{u}" 2>/dev/null)
+
+if [ -z "$remote_branch" ]; then
+    # No remote tracking branch - allow the operation
+    exit 0
+fi
+
+# Fetch the latest changes from remote
+git fetch --quiet 2>/dev/null
+
+# Count commits behind
+commits_behind=$(git rev-list --count HEAD.."$remote_branch" 2>/dev/null)
+
+if [ -z "$commits_behind" ]; then
+    # If we can't determine, allow the operation
+    exit 0
+fi
+
+# Check if branch is behind remote
+if [ "$commits_behind" -gt 0 ]; then
+    echo -e "${RED}✗ ERROR: Branch '$current_branch' is behind '$remote_branch' by $commits_behind commit(s)${NC}"
+    echo ""
+    echo "Missing commits from remote:"
+    git log --oneline --decorate HEAD.."$remote_branch"
+    echo ""
+    echo -e "${YELLOW}Please pull the latest changes first:${NC}"
+    echo "  git pull"
+    echo ""
+    exit 1
+fi
+
+# Branch is not behind - allow the operation
+exit 0

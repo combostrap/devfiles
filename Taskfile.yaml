@@ -10,4 +10,4 @@ tasks:
   update:
     cmds:
       - |
-        copier update .
+        copier update --vcs-ref HEAD .

@@ -31,8 +31,8 @@ export PROJECT_ROOT="$PWD"
 
 # Feedback
 echo "Project: "
-echo "   PROJECT_ROOT              : $PROJECT_ROOT"
-echo "   ORGANISATION_NAME         : ${ORGANISATION_NAME}"
+echo "   Project Root              : $PROJECT_ROOT"
+echo "   Organisation Name         : ${ORGANISATION_NAME}"
 
 
 # Install pre-commit hooks
@@ -130,6 +130,12 @@ if [ -d ENVRCD ]; then
 else
   echo "   Not found"
 fi
+
+echo ""
+echo "Env: "
+echo "   PROJECT_ROOT      : $PROJECT_ROOT"
+echo "   ORGANISATION_NAME : $ORGANISATION_NAME"
+echo "   REPM_DIR          : $REPM_DIR"
 
 # Last EOL before direnv output
 echo ""

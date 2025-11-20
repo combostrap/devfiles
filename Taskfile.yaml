@@ -16,4 +16,4 @@ tasks:
   release:
     cmds:
       - |
-        {{.TASKFILE_DIR}}/release
+        {{.TASKFILE_DIR}}/release {{.CLI_ARGS}}

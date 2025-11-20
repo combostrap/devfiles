@@ -238,3 +238,7 @@ task update
 # or/equivalent to
 copier update .
 ```
+
+## Contrib
+
+How to develop and contrib to this repository. See [contrib](contrib.md)

@@ -5,6 +5,8 @@
     A Pull Request should be used
   entry: git-hooks/prevent-commit-on-default
   language: script
+  pass_filenames: false
+  always_run: true
   stages: [ pre-commit ]
   minimum_pre_commit_version: 3.2.0
 - id: prevent-out-of-sync-commit
@@ -14,6 +16,8 @@
     A pull should be done first
   entry: git-hooks/prevent-out-of-sync-commit
   language: script
+  pass_filenames: false
+  always_run: true
   stages: [ pre-commit ]
   minimum_pre_commit_version: 3.2.0
 - id: git-fetch
@@ -24,4 +28,13 @@
   language: script
   pass_filenames: false
   always_run: true
+  stages: [ pre-commit ]
+- id: check-pom-xml
+  name: check maven pom
+  description: |
+    Check a maven pom file
+  entry: git-hooks/check-pom-xml
+  language: script
+  pass_filenames: false
+  files: 'pom\.xml'
   stages: [ pre-commit ]

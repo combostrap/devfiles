@@ -212,7 +212,7 @@ In your scripts, you can use the following env:
 
 The `pre-commit`:
 
-* config is part of the template at [.pre-commit-config.yaml](copier-template/.pre-commit-config.yaml)
+* config is part of the template at [.pre-commit-config.yaml](copier-template/.pre-commit-config.yaml.jinja2)
 * setup is performed with direnv via [.envrc](copier-template/.envrc.jinja2)
 * extra `git hooks` are available at [git-hooks](git-hooks)
 

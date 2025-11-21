@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# A hook to check for any error in a pom.xml file
+
+set -TCEeuo pipefail
+
+# validate the project is correct and all necessary information is available
+# https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+if ! ./mvnw validate -Dorg.slf4j.simpleLogger.defaultLogLevel=warn; then
+  echo "mvn validate command failed"
+  exit 1
+fi
+# Unfortunately, missing version is a warning, not an error
+EFFECTIVE_POM=/tmp/effective-pom.xml
+# No warning, no error
+if ! LOG=$(./mvnw help:effective-pom -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -Doutput="$EFFECTIVE_POM"); then
+  printf 'Error mvn effective command failed\n%s' "$LOG"
+  exit 1
+fi
+if [ "$LOG" != "" ]; then
+  printf 'Error or warning seen in pom.xml file:\n%s' "$LOG"
+  exit 1
+fi

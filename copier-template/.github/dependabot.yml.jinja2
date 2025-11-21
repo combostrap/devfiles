@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://json.schemastore.org/dependabot-2.0.json
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+version: 2
+updates:
+{%- if package_manager == 'maven' %}
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: daily
+    ignore:
+      - dependency-name: "org.slf4j:*"
+      - dependency-name: "org.apache.logging.log4j:*"
+{%- endif %}

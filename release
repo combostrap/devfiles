@@ -31,7 +31,7 @@ fi
 # Exit code is 1 oif there is a diff
 if diff "$ORIGIN_NORMALIZED_COPIER" "$NEW_NORMALIZED_COPIER" > "$PATCH_COPIER"; then
   echo "  * No Diff found"
-  exit 1
+  # we don't exit as it may be the recreation of a release
 fi
 patch copier.yml "$PATCH_COPIER"
 if ! grep -q "project_version: \"v$next_version\"" copier.yml; then

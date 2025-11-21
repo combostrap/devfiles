@@ -82,7 +82,7 @@ Note: the `copier template` is in the [copier-template directory](copier-templat
 
 ### Setup and local configuration (direnv)
 
-The [.envrc](copier-template/.envrc.jinja) file is the main entry for `setup` and local config.
+The [.envrc](copier-template/.envrc.jinja2) file is the main entry for `setup` and local config.
 
 It will:
 
@@ -167,9 +167,9 @@ Default  [.gitignore](copier-template/.gitignore) and [.gitattributes](copier-te
 ### Create a LICENSE file
 
 A `LICENSE` file is created from the following templates:
-  * [Apache 2.0](copier-template/%7B%25%20if%20license_type%20==%20'Apache-2.0'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja)
-  * [MIT](copier-template/%7B%25%20if%20license_type%20==%20'MIT'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja)
-  * [FSL](copier-template/%7B%25%20if%20license_type%20==%20'FSL-1.1-ALv2'%20%25%7DLICENSE.md%7B%25%20endif%20%25%7D.jinja)
+  * [Apache 2.0](copier-template/%7B%25%20if%20license_type%20==%20'Apache-2.0'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja2)
+  * [MIT](copier-template/%7B%25%20if%20license_type%20==%20'MIT'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja2)
+  * [FSL](copier-template/%7B%25%20if%20license_type%20==%20'FSL-1.1-ALv2'%20%25%7DLICENSE.md%7B%25%20endif%20%25%7D.jinja2)
 
 ### Scripts
 
@@ -189,7 +189,7 @@ They are made available:
   * the [common-scripts directory](dev-scripts/common)
   * the [package-manager directory](dev-scripts/package-manager)
 
-The code is in the [envrc](copier-template/.envrc.jinja) and can be configured by setting the
+The code is in the [envrc](copier-template/.envrc.jinja2) and can be configured by setting the
 following variable in your shell profile, `~/.bashrc`, or `~/.config/direnv/direnvrc`, or `~/.envrc.local`.
 
 | Environment                     | Default  Value                         | Description                                                     |
@@ -213,7 +213,7 @@ In your scripts, you can use the following env:
 The `pre-commit`:
 
 * config is part of the template at [.pre-commit-config.yaml](copier-template/.pre-commit-config.yaml)
-* setup is performed with direnv via [.envrc](copier-template/.envrc.jinja)
+* setup is performed with direnv via [.envrc](copier-template/.envrc.jinja2)
 * extra `git hooks` are available at [git-hooks](git-hooks)
 
 ### Prepare your next commit

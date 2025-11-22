@@ -3,7 +3,7 @@
   description: |
     Prevent a commit on the default branch
     A Pull Request should be used
-  entry: git-hooks/git-prevent-commit-on-default
+  entry: dev-scripts/git-hooks/git-prevent-commit-on-default
   language: script
   pass_filenames: false
   always_run: true
@@ -14,7 +14,7 @@
   description: |
     Prevent a commit on a out-of-sync branch
     A pull should be done first
-  entry: git-hooks/git-prevent-out-of-sync-commit
+  entry: dev-scripts/git-hooks/git-prevent-out-of-sync-commit
   language: script
   pass_filenames: false
   always_run: true
@@ -24,7 +24,7 @@
   name: git fetch
   description: |
     Fetch the latest changes from remote
-  entry: git-hooks/git-fetch
+  entry: dev-scripts/git-hooks/git-fetch
   language: script
   pass_filenames: false
   always_run: true
@@ -33,7 +33,7 @@
   name: check maven pom
   description: |
     Check a maven pom file
-  entry: git-hooks/maven-check-pom-xml
+  entry: dev-scripts/git-hooks/maven-check-pom-xml
   language: script
   pass_filenames: false
   files: 'pom\.xml'
@@ -42,7 +42,7 @@
   name: Install artifacts in the local repo
   description: |
     Install artifacts in the local repo by running maven install
-  entry: git-hooks/maven-install
+  entry: dev-scripts/git-hooks/maven-install
   language: script
   pass_filenames: false # only once
   files: \.java$ # only when a java file is present

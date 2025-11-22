@@ -120,14 +120,14 @@ Note:
 
 Example of wrappers:
 
-* [jreleaser](dev-scripts/common/jreleaser)
+* [jreleaser](dev-scripts/wrapper/jreleaser)
 * [mvnw (maven)](dev-scripts/package-manager/maven/mvnw)
 
 ### JReleaser
 
 For release management, we use [jreleaser](https://jreleaser.org/).
 
-We distribute with this template, a [jreleaser](dev-scripts/common/jreleaser) wrapper script
+We distribute with this template, a [jreleaser](dev-scripts/wrapper/jreleaser) wrapper script
 to pass the needed secrets with [pass](#pass---local-secret-management)
 
 ### Git User Configuration
@@ -139,7 +139,7 @@ To set the git user, you can set in your `.bashrc` the following env:
 | `DEVF_${ORGANIZATION_NAME}_EMAIL`       |
 | `DEVF_${ORGANIZATION_NAME}_SIGNING_KEY` |
 
-See the [Git User Configuration Script](dev-scripts/common/git-config-user)
+See the [Git User Configuration Script](dev-scripts/setup/git-config-user)
 
 ### Code Styling (Editor Config)
 
@@ -186,8 +186,10 @@ They are made available:
 
 * by cloning this repository
 * and put in the `PATH`:
-  * the [common-scripts directory](dev-scripts/common)
-  * the [package-manager directory](dev-scripts/package-manager)
+  * the [git-hooks scripts directory](#git-hooks-and-pre-commit)
+  * the [package-manager scripts](dev-scripts/package-manager)
+  * the [setup scripts directory](dev-scripts/setup)
+  * the [wrapper scripts directory](#pass---local-secret-management)
 
 The code is in the [envrc](copier-template/.envrc.jinja2) and can be configured by setting the
 following variable in your shell profile, `~/.bashrc`, or `~/.config/direnv/direnvrc`, or `~/.envrc.local`.
@@ -214,7 +216,7 @@ The `pre-commit`:
 
 * config is part of the template at [.pre-commit-config.yaml](copier-template/.pre-commit-config.yaml.jinja2)
 * setup is performed with direnv via [.envrc](copier-template/.envrc.jinja2)
-* extra `git hooks` are available at [git-hooks](git-hooks)
+* extra `git hooks` are available at [git-hooks](dev-scripts/git-hooks)
 
 ### Prepare your next commit
 

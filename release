@@ -24,7 +24,7 @@ if ! yq --exit-status . copier.yml > "$ORIGIN_NORMALIZED_COPIER"; then
   echo "  * Normalization failed"
   exit 1
 fi
-if ! yq --exit-status "(._external_data.project_version) = \"v$next_version\"" copier.yml > "$NEW_NORMALIZED_COPIER"; then
+if ! yq --exit-status "(.project_version.default) = \"v$next_version\"" copier.yml > "$NEW_NORMALIZED_COPIER"; then
   echo "  * Updated Normalization failed"
   exit 1
 fi

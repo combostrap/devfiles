@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
-# Shebang is only for the IDE
 # This script should not be called directly. It is called by direnv
+# In your IDE, you can associate the shell language to the extension .envrc.jinja2 for full bash support
 
 # Strict Bash
 set -TCEeuo pipefail
@@ -109,6 +108,9 @@ if [ -d "$DEVF_DIR" ]; then
     PACKAGE_MANAGER_PATH="$DEV_SCRIPT_PATH/package-manager/$PACKAGE_MANAGER"
     export PATH="$PACKAGE_MANAGER_PATH:$PATH" # script path first as it has a higher priority
     echo "   Package Manager Scripts Path : $PACKAGE_MANAGER_PATH"
+    SETUP_PATH="$DEV_SCRIPT_PATH/setup"
+    export PATH="$SETUP_PATH:$PATH" # script path first as it has a higher priority
+    echo "   Setup Scripts Path : $SETUP_PATH"
 
     echo ""
     echo "Git: "

@@ -120,14 +120,14 @@ Note:
 
 Example of wrappers:
 
-* [jreleaser](dev-scripts/wrapper/jreleaser)
+* [jreleaser](dev-scripts/wrappers/jreleaser)
 * [mvnw (maven)](dev-scripts/package-manager/maven/mvnw)
 
 ### JReleaser
 
 For release management, we use [jreleaser](https://jreleaser.org/).
 
-We distribute with this template, a [jreleaser](dev-scripts/wrapper/jreleaser) wrapper script
+We distribute with this template, a [jreleaser](dev-scripts/wrappers/jreleaser) wrapper script
 to pass the needed secrets with [pass](#pass---local-secret-management)
 
 ### Git User Configuration
@@ -170,6 +170,11 @@ A `LICENSE` file is created from the following templates:
   * [Apache 2.0](copier-template/%7B%25%20if%20license_type%20==%20'Apache-2.0'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja2)
   * [MIT](copier-template/%7B%25%20if%20license_type%20==%20'MIT'%20%25%7DLICENSE%7B%25%20endif%20%25%7D.jinja2)
   * [FSL](copier-template/%7B%25%20if%20license_type%20==%20'FSL-1.1-ALv2'%20%25%7DLICENSE.md%7B%25%20endif%20%25%7D.jinja2)
+
+We follow the most common names:
+* `LICENSE`,
+* `LICENSE.txt`,
+* `LICENSE.md`
 
 ### Scripts
 

@@ -47,3 +47,11 @@ never_split        = true  # like -ns
 # 1) First
 #    Second
 indent_size = unset
+
+[*.ts]
+# indent is unset because
+# a comment has only one space margin in intellij
+# ie
+# /**
+#  * Star is at once space
+indent_size = unset

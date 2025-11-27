@@ -45,5 +45,5 @@
   entry: dev-scripts/git-hooks/maven-install
   language: script
   pass_filenames: false # only once
-  files: \.java$ # only when a java file is present
+  files: '(\.java$|pom\.xml$)' # only when a java file or pom.xml is present
   stages: [ post-commit ]

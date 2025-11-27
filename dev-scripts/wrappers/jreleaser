@@ -43,7 +43,9 @@ fi
 
 # Standard
 # Same as maven (Default to out)
-export JRELEASER_OUTPUT_DIRECTORY=target
+if [ "${JRELEASER_OUTPUT_DIRECTORY:-}" == "" ]; then
+  export JRELEASER_OUTPUT_DIRECTORY=target
+fi
 # execution directory so that we can execute it from anywhere
 if [ "$PROJECT_ROOT" != "" ]; then
   export JRELEASER_BASEDIR=$PROJECT_ROOT
@@ -51,5 +53,6 @@ fi
 
 # Run
 # We select the second in path order
-# Why? we may get jreleaser from sdk man and also from brew.
+# Why? we may get jreleaser from the project (ie sdk man) and also globally from brew.
+# We take the second in order of priority
 "$(which -a jreleaser | sed -n '2p')" "$@"

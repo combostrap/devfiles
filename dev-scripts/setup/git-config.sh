@@ -4,7 +4,7 @@
 export COL_PROP_LENGTH=8
 # Git User Email
 # Env name should be uppercase without minus
-EMAIL_VAR="${DEVF_PREFIX}_${ORGANISATION_ENV_NAME}_EMAIL"
+EMAIL_VAR="${DEVF_PREFIX}_${ORGANIZATION_ENV_NAME}_EMAIL"
 EMAIL_VALUE="${!EMAIL_VAR:-}"
 if devf_check_env_var "$EMAIL_VAR" "$EMAIL_VALUE" "$USER_ENV_SCOPE"; then
 
@@ -19,7 +19,7 @@ fi
 
 # Git signing key is the long format dir
 # gpg --list-secret-keys --keyid-format=long
-SIGNING_KEY_VAR="${DEVF_PREFIX}_${ORGANISATION_ENV_NAME}_SIGNING_KEY"
+SIGNING_KEY_VAR="${DEVF_PREFIX}_${ORGANIZATION_ENV_NAME}_SIGNING_KEY"
 SIGNING_KEY_VALUE="${!SIGNING_KEY_VAR:-}"
 if devf_check_env_var "$SIGNING_KEY_VAR" "$SIGNING_KEY_VALUE" "$USER_ENV_SCOPE"; then
 

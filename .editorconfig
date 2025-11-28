@@ -70,3 +70,8 @@ indent_size = unset
 # /**
 #  * Star is at once space
 indent_size = unset
+
+[*.java]
+# Due to catch (IllegalBlockSizeException
+#        InvalidKeyException e) {
+indent_size = unset

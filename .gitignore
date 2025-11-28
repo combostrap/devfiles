@@ -7,3 +7,5 @@ out
 *~
 # orig are file created by the merge tool
 *.orig
+# aider files to ignore
+.aider*

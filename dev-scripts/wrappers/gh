@@ -7,7 +7,12 @@ set -TCEeuo pipefail
 export GH_HOST="github.com"
 
 # Github
+# The token is not scoped at the organization but at the user level
 # The token starts with gh
+# The minimum required scopes for the token are:
+# repo, read:org, and gist
+# https://cli.github.com/manual/gh_auth_login
+# See the scope with `gh auth status`
 GITHUB_TOKEN_PATH="github/gh-token"
 if GITHUB_TOKEN_VALUE=$(pass "$GITHUB_TOKEN_PATH"); then
   # for the docker upload

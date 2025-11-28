@@ -2,7 +2,7 @@
 # Continuous delivery with JReleaser
 # Why not? maven, it creates a nice GitHub release
 
-name: Continuous Deployment to Maven Central Repository
+name: Continuous Deploy Maven Repository
 on:
   # Trigger on button click
   workflow_dispatch:

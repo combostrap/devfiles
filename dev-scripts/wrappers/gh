@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# gh cli wrapper to inject secrets env
+# https://cli.github.com/manual/gh_help_environment
+
+set -TCEeuo pipefail
+
+export GH_HOST="github.com"
+
+# Github
+# The token starts with gh
+GITHUB_TOKEN_PATH="github/gh-token"
+if GITHUB_TOKEN_VALUE=$(pass "$GITHUB_TOKEN_PATH"); then
+  # for the docker upload
+  export GH_TOKEN="$GITHUB_TOKEN_VALUE"
+else
+  echo "Warning: No github token found at the pass path: $GITHUB_TOKEN_PATH"
+fi
+
+
+# Run
+# We select the second in path order
+# Why? we may get it from the project (ie sdk man) and also globally from brew.
+# We take the second in order of priority
+"$(which -a gh | sed -n '2p')" "$@"

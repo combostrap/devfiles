@@ -149,6 +149,9 @@ We also use the following `editorconfig` code styling utility:
 * [editorconfig-checker)](https://github.com/editorconfig-checker/editorconfig-checker)
   as [hook](#git-hooks-and-pre-commit)
 
+Note: Specific for Java, there is also [checkstyle](https://github.com/checkstyle/checkstyle). It's a check tool, not
+integrated in any IDE.
+
 ### Commit Message Validation (CommitLint)
 
 [commitlint](https://commitlint.js.org/) configuration is located

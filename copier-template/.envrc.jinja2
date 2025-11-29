@@ -69,7 +69,7 @@ fi
 # Pre-commit setup
 # Install pre-commit hooks
 ############################
-if command -v pre-commit &>/dev/null; then
+if command -v pre-commit &> /dev/null; then
 
   echo ""
   echo "Pre-commit:"
@@ -98,13 +98,14 @@ else
 fi
 
 # In case, the repo was not installed
-echo ""
-echo "Devfiles Scripts:"
 if [ -d "$DEVF_DIR" ]; then
 
   #################
   # Bin
   #################
+  echo ""
+  echo "Devfiles Scripts in PATH:"
+  export COL_PROP_LENGTH=28
   DEV_SCRIPT_PATH="$DEVF_DIR/dev-scripts"
   PACKAGE_MANAGER_PATH="$DEV_SCRIPT_PATH/package-manager/$PACKAGE_MANAGER"
   export PATH="$PACKAGE_MANAGER_PATH:$PATH" # script path first as it has a higher priority
@@ -118,6 +119,8 @@ if [ -d "$DEVF_DIR" ]; then
   WRAPPERS_PATH="$DEV_SCRIPT_PATH/wrappers"
   export PATH="$WRAPPERS_PATH:$PATH" # script path first as it has a higher priority
   devf_print_props "Wrapper Scripts Path" "$WRAPPERS_PATH"
+  export PATH="$PROJECT_ROOT:$PATH" # script such as mvnw are in this path
+  devf_print_props "Project Root Path" "$PROJECT_ROOT"
 
   echo ""
   echo "Git: "
@@ -134,13 +137,13 @@ if [ -d "$DEVF_DIR" ]; then
     echo "   Version: $SDKMAN_MAVEN_VERSION"
 
     # mvn setup
-    if ! command -v mvn &>/dev/null; then
+    if ! command -v mvn &> /dev/null; then
       echo "Maven mvn command not found in the path. Installing it with sdkman"
       if [[ $(type -t sdk) == "" ]]; then
         # Sdk man init
         source "$DEV_SCRIPT_PATH/setup/sdkman.sh"
       fi
-      if ! sdk home maven "${SDKMAN_MAVEN_VERSION}" >/dev/null; then
+      if ! sdk home maven "${SDKMAN_MAVEN_VERSION}" > /dev/null; then
         devf_echo_yellow "Maven installation with sdkman"
         sdk install maven "${SDKMAN_MAVEN_VERSION}"
       fi

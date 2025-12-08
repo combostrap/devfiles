@@ -254,7 +254,7 @@ git-prepare
 
 ### Task Distribution
 
-The [go task](https://github.com/go-task/task) file is [Taskfile.yaml](copier-template/Taskfile.yaml.jinja2)
+The [go task](https://github.com/go-task/task) file is [Taskfile.yml](copier-template/Taskfile.yml.jinja2)
 
 ## How to
 

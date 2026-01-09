@@ -108,6 +108,7 @@ _answers_file: .copier-answers.yml
 _skip_if_exists:
   - "LICENSE"
   - "CONTRIBUTING.md"
+  - ".github/SECURITY.md"
 
 # Excluding
 # https://copier.readthedocs.io/en/stable/configuring/#exclude

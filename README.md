@@ -256,6 +256,10 @@ git-prepare
 
 The [go task](https://github.com/go-task/task) file is [Taskfile.yml](copier-template/Taskfile.yml.jinja2)
 
+### Security Policy
+
+Default [Security Policy](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository):  [SECURITY.md](copier-template/.github/SECURITY.md.jinja2)
+
 ## How to
 
 ### How to update the devfiles to the latest version?

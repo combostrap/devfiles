@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
+# Does not work outside of Intellij as seen:
+# * in the [doc](# https://www.jetbrains.com/help/idea/command-line-formatter.html): It will not work if another instance of IntelliJ IDEA is already running.
+# * by the error: `Only one instance of IDEA can be run at a time.`
 
 set -Eeuo pipefail
 
 # Check if idea command is available
 if ! command -v idea &> /dev/null; then
-    echo "Error: 'idea' command not found. Please set up IntelliJ's command-line launcher."
-    echo "See: Tools → Create Command-line Launcher in IntelliJ IDEA"
-    exit 0
+  echo "Error: 'idea' command not found. Please set up IntelliJ's command-line launcher."
+  echo "See: Tools → Create Command-line Launcher in IntelliJ IDEA"
+  exit 0
 fi
 
 # Format each file passed as argument
 for file in "$@"; do
-    if [ -f "$file" ]; then
-        echo "Formatting: $file"
-        idea format "$file"
-    fi
+  if [ -f "$file" ]; then
+    echo "Formatting: $file"
+    idea format -allowDefaults "$file"
+  fi
 done
 
 exit 0

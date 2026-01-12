@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+# Check if idea command is available
+if ! command -v idea &> /dev/null; then
+    echo "Error: 'idea' command not found. Please set up IntelliJ's command-line launcher."
+    echo "See: Tools → Create Command-line Launcher in IntelliJ IDEA"
+    exit 0
+fi
+
+# Format each file passed as argument
+for file in "$@"; do
+    if [ -f "$file" ]; then
+        echo "Formatting: $file"
+        idea format "$file"
+    fi
+done
+
+exit 0

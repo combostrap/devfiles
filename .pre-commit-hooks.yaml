@@ -58,3 +58,10 @@
   # https://pre-commit.com/#post-commit
   always_run: true
   stages: [ post-commit ]
+# .pre-commit-hooks.yaml
+- id: idea-format
+  name: IntelliJ IDEA Code Formatter
+  entry: dev-scripts/git-hooks/idea-format
+  language: script
+  pass_filenames: true
+  description: Format code using IntelliJ IDEA's formatter if present

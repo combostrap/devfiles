@@ -169,7 +169,12 @@ on commit with `pre-commit`.
 
 Default  [.gitignore](copier-template/.gitignore) and [.gitattributes](copier-template/.gitattributes) are installed
 
-### Create a LICENSE file
+### Community/Contribution Documentation
+
+* https://opensource.guide/
+* [List supported by GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file#supported-file-types)
+
+#### Create a LICENSE file
 
 A `LICENSE` file is created from the following templates:
 
@@ -183,13 +188,39 @@ We follow the most common names:
 * `LICENSE.txt`,
 * `LICENSE.md`
 
-### Create a CONTRIBUTING.md
+[GitHub Documentation](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository)
+
+#### Contributor guidelines
 
 A
-minimal [Contributing guideline](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
-file is created.
+minimal [Contributor guidelines](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
+file is created. [CONTRIBUTING.md](copier-template/.github/CONTRIBUTING.md)
 
 This file is used also to give any direction on how people can start easily with the project.
+
+#### Code of Conduct
+
+A [code of conduct](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project)
+is created. [CODE_OF_CONDUCT.md](copier-template/.github/CODE_OF_CONDUCT.md.jinja2)
+
+#### Support Info
+
+A [support documentation](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project)
+is created. [SUPPORT.md](copier-template/.github/SUPPORT.md.jinja2)
+
+#### Security Policy
+
+Default [Security Policy](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository):  [SECURITY.md](copier-template/.github/SECURITY.md.jinja2)
+
+#### Issue Template
+
+[Issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates):
+
+* [01-bug-report.yml](copier-template/.github/ISSUE_TEMPLATE/01-bug-report.yml)
+* [02-feature-request.yml](copier-template/.github/ISSUE_TEMPLATE/02-feature-request.yml)
+
+with
+the [Template chooser config file](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#configuring-the-template-chooser): [config.yml](copier-template/.github/ISSUE_TEMPLATE/config.yml.jinja2)
 
 ### Scripts
 
@@ -255,10 +286,6 @@ git-prepare
 ### Task Distribution
 
 The [go task](https://github.com/go-task/task) file is [Taskfile.yml](copier-template/Taskfile.yml.jinja2)
-
-### Security Policy
-
-Default [Security Policy](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository):  [SECURITY.md](copier-template/.github/SECURITY.md.jinja2)
 
 ## How to
 

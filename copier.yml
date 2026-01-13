@@ -9,6 +9,20 @@ organization_name:
     Generally the owner name of your repo
     ie `orga` in https://github.com/orga/repo
 
+organization_email:
+  type: str
+  default: "contact@{{ organization_name }}.com"
+  help: |
+    Contact Email ?
+    It's used in community document such as community standards or licence
+
+organization_url:
+  type: str
+  default: "https://www.{{ organization_name }}.com"
+  help: |
+    Contact URL ?
+    It's used in community document such as community standards or licence
+
 project_name:
   type: str
   validator: "{% if project_name == '' %}Must not be empty{% endif %}"
@@ -109,7 +123,11 @@ _answers_file: .copier-answers.yml
 _skip_if_exists:
   - "LICENSE"
   - "CONTRIBUTING.md"
+  - ".github/CODE_OF_CONDUCT.md"
+  - ".github/CONTRIBUTING.md"
+  - ".github/ISSUE_TEMPLATE"
   - ".github/SECURITY.md"
+  - ".github/SUPPORT.md"
 
 # Excluding
 # https://copier.readthedocs.io/en/stable/configuring/#exclude

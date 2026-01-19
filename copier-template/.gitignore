@@ -19,3 +19,5 @@ node_modules
 .yarn
 # astro
 .astro
+# astro build
+dist

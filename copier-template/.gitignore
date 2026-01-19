@@ -10,3 +10,12 @@ out
 # aider files to ignore
 .aider*
 !.aiderignore
+
+# Node modules
+node_modules
+# vscode
+.vscode
+# yarn
+.yarn
+# astro
+.astro

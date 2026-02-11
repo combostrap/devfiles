@@ -208,6 +208,12 @@ is created. [CODE_OF_CONDUCT.md](copier-template/.github/CODE_OF_CONDUCT.md.jinj
 A [support documentation](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-support-resources-to-your-project)
 is created. [SUPPORT.md](copier-template/.github/SUPPORT.md.jinja2)
 
+#### Attribution / Credit
+
+A default [attribution](https://en.wikipedia.org/wiki/Attribution_(copyright)) file is
+created. [ATTRIBUTIONS.md](copier-template/ATTRIBUTIONS.md)
+
+
 #### Security Policy
 
 Default [Security Policy](https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository):  [SECURITY.md](copier-template/.github/SECURITY.md.jinja2)

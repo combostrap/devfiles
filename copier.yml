@@ -122,6 +122,7 @@ _answers_file: .copier-answers.yml
 # Skip if exists
 _skip_if_exists:
   - "LICENSE"
+  - "ATTRIBUTIONS.md"
   - "CONTRIBUTING.md"
   - ".github/CODE_OF_CONDUCT.md"
   - ".github/CONTRIBUTING.md"

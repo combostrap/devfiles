@@ -8,7 +8,7 @@ repos:
     rev: 3e8a870 # v6.0.0
     hooks:
       - id: trailing-whitespace # trims trailing whitespace
-      - id: end-of-file-fixer # makes sure files end in a newline and only a newline.
+      # - id: end-of-file-fixer # no added value at all (svg are also impacted, block commit for nothing)
       - id: check-yaml
       - id: check-added-large-files # no commit on large files
         exclude: package-lock.json # they may be 700kb, and it's recommended to commit them in

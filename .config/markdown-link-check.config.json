@@ -9,6 +9,9 @@
     },
     {
       "pattern": "example\\.com"
+    },
+    {
+      "pattern": "localhost"
     }
   ]
 }

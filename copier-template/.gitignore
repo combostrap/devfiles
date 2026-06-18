@@ -11,6 +11,11 @@ out
 .aider*
 !.aiderignore
 
+# Terraform / Tofu
+.terraform
+*.tfstate
+*.tfstate.backup
+
 # Node modules
 node_modules
 # vscode

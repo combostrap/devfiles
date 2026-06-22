@@ -155,7 +155,7 @@ integrated in any IDE.
 ### Commit Message Validation (CommitLint)
 
 [commitlint](https://commitlint.js.org/) configuration is located
-at [commitlint.config.js](copier-template/.config/commitlint.config.js)
+at [commitlint.config.js](copier-template/.config/commitlint.config.mjs)
 
 ### Markdown Link-Check
 

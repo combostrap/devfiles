@@ -6,6 +6,9 @@
 # Exception: cmd command uses CRLF (Windows line endings)
 *.cmd text eol=crlf
 *.bat text eol=crlf
+*.http text eol=crlf
+# email
+*.eml text eol=crlf
 
 # images
 *.png binary

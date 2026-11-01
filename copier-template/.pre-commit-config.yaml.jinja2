@@ -1,8 +1,12 @@
+# yaml-language-server: $schema=https://json.schemastore.org/pre-commit-config.json
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 # No tag as rev because they can be overwritten while sha cannot
 # Check the code
 # For update to the last commit `pre-commit autoupdate`. See https://pre-commit.com/#using-the-latest-version-for-a-repository
+default_language_version:
+  # Why? Error on node version such as prebuilt node (27.0.0-alpha.0.0.0).  ValueError: invalid literal for int() with base 10: '0-alpha'
+  node: system
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 3e8a870 # v6.0.0

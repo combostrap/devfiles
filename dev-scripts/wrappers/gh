@@ -1,8 +1,28 @@
 #!/usr/bin/env bash
-# gh cli wrapper to inject secrets env
+# gh shim (a cli wrapper to inject secrets env)
 # https://cli.github.com/manual/gh_help_environment
 
 set -TCEeuo pipefail
+
+# Log request
+echo "$(date -Is) gh $*" >> /tmp/gh-shim.log
+
+# Block token
+if [[ "$1" == "auth" && "$2" == "token" ]]; then
+    echo "gh shim: auth token is disabled" >&2
+    exit 1
+fi
+if [[ "$1" == "auth" ]]; then
+  for arg in "$@"; do
+    case "$arg" in
+      -t|--show-token|--show-token=*)
+        # don't leak the token
+        echo "gh shim: --show-token is disabled" >&2
+        exit 1
+        ;;
+    esac
+  done
+fi
 
 export GH_HOST="github.com"
 
@@ -21,9 +41,24 @@ else
   echo "Warning: No github token found at the pass path: $GITHUB_TOKEN_PATH"
 fi
 
+# Get the original
+# We take the next path in the list of (which -a script_basename)
+# And not (which -a cmd | sed -n '2p') as it  may recurse if the file is now the second one
+# Note we could also do: (which -a cmd | tail -n 1)
+script_path="$(realpath "${BASH_SOURCE[0]}")"
+script_basename="$(basename "${BASH_SOURCE[0]}")"
+next_self() {
+  local found=0 p
+  while IFS= read -r p; do
+    if (( found )); then
+      printf '%s\n' "$p"
+      return 0
+    fi
+    [[ "$(realpath "$p")" == "$script_path" ]] && found=1
+  done < <(which -a "$script_basename")
+  return 1
+}
+real_path="$(next_self)" || { echo "$script_basename: no next $script_basename found in PATH" >&2; exit 1; }
 
 # Run
-# We select the second in path order
-# Why? we may get it from the project (ie sdk man) and also globally from brew.
-# We take the second in order of priority
-"$(which -a gh | sed -n '2p')" "$@"
+"$real_path" "$@"
